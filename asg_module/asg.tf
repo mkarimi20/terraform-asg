@@ -5,10 +5,10 @@ resource "aws_launch_configuration" "as_conf" {
   instance_type = "t2.micro"
   provisioner "remote-exec" {
     connection {
-      host        = "${file(~/.ssh/id_rsa.pub)}"
+      host        = "${self.public_ip}"
       type        = "ssh"
       user        = "centos" 
-private_key = "${file(~/.ssh/id_rsa)}"
+    private_key = "${file(~/.ssh/id_rsa)}"
 }
 inline = [
   "sudo yum install -y epel-release",]
