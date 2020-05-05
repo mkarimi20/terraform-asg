@@ -3,6 +3,7 @@ resource "aws_launch_configuration" "as_conf" {
   name = "web_conf"
   image_id = "${data.aws_ami.image.id}"
   instance_type = "t2.micro"
+
   provisioner "remote-exec" {
     connection {
       host        = "${self.public_ip}"
@@ -11,7 +12,8 @@ resource "aws_launch_configuration" "as_conf" {
     private_key = "${file(~/.ssh/id_rsa)}"
 }
 inline = [
-  "sudo yum install -y epel-release",]
+  "sudo yum install -y epel-release",
+  ]
   } 
 }
 
