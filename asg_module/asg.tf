@@ -1,3 +1,8 @@
+data "template_file" "init" {
+  template = "${file("${path.asg_module}/wordpress.sh")}"
+}
+
+
 resource "aws_launch_configuration" "as_conf" {
   name = "web_conf"
   image_id = "${data.aws_ami.image.id}"
