@@ -6,7 +6,7 @@ resource "aws_launch_configuration" "as_conf" {
 }
 
 
-resource "aws.aws_autoscaling_group" "someone" {
+resource "aws_autoscaling_group" "someone" {
     name = "terraform_asg"
     launch_configuration = "${aws_launch_configuration.as_conf.name}"
 
