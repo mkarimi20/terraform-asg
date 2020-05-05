@@ -11,12 +11,12 @@ resource "aws_autoscaling_group" "someone" {
     launch_configuration = "${aws_launch_configuration.as_conf.name}"
 
     availability_zones = [
-      "us-east-1a",
-      "us-east-1b",
-      "us-east-1c",
+      "${var.region}a",
+      "${var.region}b",
+      "${var.region}c",
     ] 
-    min_size = 1
-    max_size = 2
+    min_size = "${var.min_size}"
+    max_size = "${var.max_size}"
       
 lifecycle {
   create_before_destroy = true
