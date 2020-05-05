@@ -1,13 +1,18 @@
-data "template_file" "init" {
-  template = "${file("${path.asg_module}/wordpress.sh")}"
-}
-
 
 resource "aws_launch_configuration" "as_conf" {
   name = "web_conf"
   image_id = "${data.aws_ami.image.id}"
   instance_type = "t2.micro"
-  user_data = "${file("wordpress.sh")}"
+  provisioner "remote-exec" {
+    connection {
+      host        = "${self.public_ip}"
+      type        = "ssh"
+      user        = "centos" 
+private_key = "${file(~/.ssh/id_rsa)}"
+}
+inline = [
+  "sudo yum install -y epel-release",]
+  } 
 }
 
 
