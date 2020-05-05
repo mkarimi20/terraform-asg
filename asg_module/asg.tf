@@ -17,6 +17,7 @@ resource "aws_autoscaling_group" "someone" {
     ] 
     min_size = "${var.min_size}"
     max_size = "${var.max_size}"
+    desired_capacity = "${var.desired_capacity}"
       
 lifecycle {
   create_before_destroy = true
