@@ -1,6 +1,6 @@
 resource "aws_launch_configuration" "as_launch_conf" {
   name = "web_conf"
-  image_id = "${data.aws.image.id}"
+  image_id = "${data.aws_ami.image.id}"
   instance_type = "t2.micro"  
   user_data = "${file("wordpress.sh")}"
 }
