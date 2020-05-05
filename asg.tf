@@ -8,7 +8,7 @@ resource "aws_launch_configuration" "as_launch_conf" {
 
 resource "aws.aws_autoscaling_group" "bar" {
     name = "terraform_asg"
-    launch_configuration = "${aws_launch_configuration.as_launch_conf}"
+    launch_configuration = "${aws_launch_configuration.as_launch_conf.name}"
     availiblity_zone = [
       "us-east-1a",
       "us-east-1b",
